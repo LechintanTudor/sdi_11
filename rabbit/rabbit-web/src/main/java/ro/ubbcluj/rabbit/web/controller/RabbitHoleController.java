@@ -26,6 +26,13 @@ public class RabbitHoleController {
         return RabbitHoleDtoConverter.convert(rabbitHoles);
     }
 
+    @GetMapping("/rabbit-holes/filtered")
+    public RabbitHolesDto findAllRabbitHolesLike(@RequestParam String name) {
+        System.out.println(name);
+        var rabbitHoles = rabbitHoleService.findRabbitHolesLike(name);
+        return RabbitHoleDtoConverter.convert(rabbitHoles);
+    }
+
     @PutMapping("rabbit-holes")
     public void updateRabbitHole(@RequestBody RabbitHoleDto rabbitHoleDto) {
         var rabbitHole = RabbitHoleDtoConverter.convert(rabbitHoleDto);

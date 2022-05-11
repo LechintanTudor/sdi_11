@@ -29,6 +29,11 @@ public class RabbitHoleService {
         return rabbitHoles.findAll();
     }
 
+    public List<RabbitHole> findRabbitHolesLike(String name) {
+        LOGGER.trace("RabbitHoleService - findAllRabbitHoles({})", name);
+        return rabbitHoles.findByNameLike(name);
+    }
+
     @Transactional
     public void updateRabbitHole(RabbitHole rabbitHole) {
         LOGGER.trace("RabbitHoleService - updateRabbitHole({})", rabbitHole);

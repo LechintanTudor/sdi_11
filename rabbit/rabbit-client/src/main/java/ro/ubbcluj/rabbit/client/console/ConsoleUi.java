@@ -39,6 +39,7 @@ public class ConsoleUi {
         // Rabbit holes
         addCommand("saveRabbitHole", this::saveRabbitHole, "name");
         addCommand("findAllRabbitHoles", this::findAllRabbitHoles, "");
+        addCommand("findRabbitHolesLike", this::findRabbitHolesLike, "name");
         addCommand("updateRabbitHole", this::updateRabbitHole, "id, name");
         addCommand("deleteRabbitHoleById", this::deleteRabbitHoleById, "id");
 
@@ -110,6 +111,14 @@ public class ConsoleUi {
         validateArgumentCount(args, 0);
 
         var rabbitHoles = rest.getForObject(url("/rabbit-holes"), RabbitHolesDto.class);
+        rabbitHoles.rabbitHoles().forEach(System.out::println);
+    }
+
+    private void findRabbitHolesLike(String[] args) {
+        validateArgumentCount(args, 1);
+        var name = args[0];
+
+        var rabbitHoles = rest.getForObject(url(String.format("/rabbit-holes/filtered?name=%s", name)), RabbitHolesDto.class);
         rabbitHoles.rabbitHoles().forEach(System.out::println);
     }
 
