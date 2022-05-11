@@ -14,4 +14,8 @@ public class RabbitDtoConverter {
     public static RabbitsDto convert(List<Rabbit> rabbits) {
         return new RabbitsDto(rabbits.stream().map(RabbitDtoConverter::convert).toList());
     }
+
+    public static Rabbit convert(RabbitDto rabbitDto) {
+        return new Rabbit(rabbitDto.id(), rabbitDto.username());
+    }
 }

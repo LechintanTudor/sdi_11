@@ -33,12 +33,12 @@ public class RabbitService {
     public void updateRabbit(Rabbit rabbit) {
         LOGGER.trace("RabbitService - updateRabbit({})", rabbit);
         rabbits.findById(rabbit.getId()).ifPresent(oldRabbit -> {
-            LOGGER.trace("RabbitService - updated rabbit password");
-            oldRabbit.setPassword(rabbit.getPassword());
+            LOGGER.trace("RabbitService - updated rabbit username");
+            oldRabbit.setUsername(rabbit.getUsername());
         });
     }
 
-    public void deleteRabbitById(Long id) {
+    public void deleteRabbit(Long id) {
         LOGGER.trace("RabbitService - deleteById({})", id);
         rabbits.deleteById(id);
     }
