@@ -7,13 +7,15 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @AllArgsConstructor
 @Data
 @Entity
 @NoArgsConstructor
-public class RabbitHole {
-    private @Id
-    @GeneratedValue Long id;
+public class RabbitHole implements Serializable {
+    @Id
+    @GeneratedValue
+    private Long id;
     private String name;
 }
