@@ -1,6 +1,7 @@
 package ro.ubbcluj.rabbit.web.controller;
 
 import org.springframework.web.bind.annotation.*;
+import ro.ubbcluj.rabbit.core.model.Subscription;
 import ro.ubbcluj.rabbit.core.service.SubscriptionService;
 import ro.ubbcluj.rabbit.web.converter.SubscriptionDtoConverter;
 import ro.ubbcluj.rabbit.web.dto.SubscriptionDto;
@@ -26,9 +27,9 @@ public class SubscriptionController {
         return SubscriptionDtoConverter.convert(subscriptions);
     }
 
-    @DeleteMapping("/subscriptions")
-    public void deleteSubscription(@RequestBody SubscriptionDto subscriptionDto) {
-        var subscription = SubscriptionDtoConverter.convert(subscriptionDto);
+    @DeleteMapping("/subscriptions/{rabbitId}/{rabbitHoleId}")
+    public void deleteSubscription(@PathVariable Long rabbitId, @PathVariable Long rabbitHoleId) {
+        var subscription = new Subscription(rabbitId, rabbitHoleId);
         subscriptionService.deleteSubscription(subscription);
     }
 }

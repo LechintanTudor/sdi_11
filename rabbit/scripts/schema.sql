@@ -17,16 +17,16 @@ CREATE TABLE rabbithole
 
 CREATE TABLE subscription
 (
-    rabbitid      INT NOT NULL REFERENCES rabbit (id),
+    rabbitid     INT NOT NULL REFERENCES rabbit (id),
     rabbitholeid INT NOT NULL REFERENCES rabbithole (id),
     PRIMARY KEY (rabbitid, rabbitholeid)
 );
 
 CREATE TABLE post
 (
-    id             SERIAL PRIMARY KEY,
-    rabbitid      INT          NOT NULL REFERENCES rabbit (id),
+    id           SERIAL PRIMARY KEY,
+    rabbitid     INT          NOT NULL REFERENCES rabbit (id),
     rabbitholeid INT          NOT NULL REFERENCES rabbithole (id),
-    title          VARCHAR(120) NOT NULL,
-    content        TEXT         NOT NULL
+    title        VARCHAR(120) NOT NULL,
+    content      TEXT         NOT NULL
 );

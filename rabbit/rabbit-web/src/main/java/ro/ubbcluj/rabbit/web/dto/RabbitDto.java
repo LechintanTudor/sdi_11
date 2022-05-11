@@ -1,4 +1,4 @@
 package ro.ubbcluj.rabbit.web.dto;
 
-public record RabbitDto(long id, String username) {
+public record RabbitDto(Long id, String username) {
 }
